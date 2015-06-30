@@ -1,3 +1,5 @@
+import ProjectWideResources.ClassifierConstants;
+
 /**
  * Created by dsharma on 6/30/15.
  */
@@ -9,6 +11,9 @@ public class Tutor implements ClassifierConstants {
     private int positiveReviews;
     private int negativeReviews;
 
+    public Tutor() {
+    	
+    }
 
     public String getName() {
         return name;
