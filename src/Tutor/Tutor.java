@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+package Tutor;
+
+>>>>>>> dc8bdfd3dbc7afb9517591de5a30b0be87882d97
 import ProjectWideResources.ClassifierConstants;
 
 /**

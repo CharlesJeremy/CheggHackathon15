@@ -7,7 +7,7 @@ import ProjectWideResources.ClassifierConstants;
 
 
 public class NaiveBayesMainClassifier implements ClassifierConstants{
-	private int[NUMBER_OF_BOOKS][]currentFrequencyTable;
+	private int[NUMBER_OF_BOOKS][2]currentFrequencyTable;
 	public NaiveBayesMainClassifier(List<List<Integer>> trainingData){
 		
 	}
