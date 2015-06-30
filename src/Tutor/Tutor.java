@@ -1,3 +1,7 @@
+package Tutor;
+
+import ProjectWideResources.ClassifierConstants;
+
 /**
  * Created by dsharma on 6/30/15.
  */
