@@ -11,6 +11,7 @@
         border-radius: 25px;
       }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <meta charset="utf-8">
     <title>test</title>
   </head>
@@ -18,11 +19,39 @@
 
     <div id="TutorsDiv">
       <form class="" action="index.html" method="post">
-        <input type="text" name="name" value="">
-        <input type="button" name="submit" value="Submit">
+        <input id="searchTerm" type="text" name="name" value="">
+        <input onClick="clickAlchemy()" type="button" name="submit" value="Submit">
       </form>
     </div>
     <script type="text/javascript">
+    function clickAlchemy()
+    {
+      //alert("hello");
+        var searchVal = $("#searchTerm").val();
+            if (searchVal.length  < 1) {
+                alert("Please enter a valid search keyword");
+                return;
+            }
+
+            var getUrl = "http://localhost:8080/restservice-1.0/rest/twitter/query?keyword=" + searchVal + "&algorithm=A";
+            console.log("getting data from:", getUrl);
+
+            $.get( getUrl, function( results )
+            {
+              renderResults(results);
+            });
+    }
+
+    function renderResults(results)
+    {
+      var tutorArray = JSON.parse(results);
+      var element = document.getElementById("TutorsDiv");
+      for(var i = 0; i < tutorArray.length; i++){
+        element.innerHTML +='<div class="tutorDiv"> <h3>' + tutorArray[i].name + '</h3><img src="' + tutorArray[i].picture + '" height="90" width="90"><div class="subject">Subject: ' + tutorArray[i].subject + '</div> <div class="school"> School: ' + tutorArray[i].school + '</div><div class="posReviews">Positive Reviews: ' + tutorArray[i].numPosReviews + '  </div>';
+      }
+      console.log(results);
+    }
+/*
     var tutorArray = [{
       "id": 54,
       "subject": "being awesome",
@@ -50,7 +79,7 @@
     var element = document.getElementById("TutorsDiv");
     for(var i = 0; i < tutorArray.length; i++){
       element.innerHTML +='<div class="tutorDiv"> <h3>' + tutorArray[i].name + '</h3><img src="' + tutorArray[i].picture + '" height="90" width="90"><div class="subject">Subject: ' + tutorArray[i].subject + '</div> <div class="school"> School: ' + tutorArray[i].school + '</div><div class="posReviews">Positive Reviews: ' + tutorArray[i].numPosReviews + '  </div>';
-    }
+    }*/
     </script>
   </body>
 </html>
