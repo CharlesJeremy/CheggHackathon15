@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import ProjectWideResources.ClassifierConstants;
+import Student.Student;
 
 public class RowDataReader implements ClassifierConstants{
 	
@@ -12,21 +13,29 @@ public class RowDataReader implements ClassifierConstants{
 		
 	}
 	
-	public int[][] getData(String filename) {
-		int[][] data = new int[NUMBER_OF_STUDENT_ROWS][NUMBER_OF_BOOK_COLUMNS + 1];
+	public Student[] getData(String filename) {
 		try {
 			BufferedReader rd = new BufferedReader(new FileReader(filename));
-			for (int i = 0; i < 2; i++) {
-				rd.readLine();
-			}
-			for (int rowIndex = 0; rowIndex < NUMBER_OF_STUDENT_ROWS; rowIndex++) {
-				String input = rd.readLine();
-				for (int columnIndex = 0; columnIndex < NUMBER_OF_BOOK_COLUMNS + 1; columnIndex++) {
-					data[rowIndex][columnIndex] = Integer.parseInt(input.charAt(columnIndex) + "");
+			int nStudents = Integer.parseInt(rd.readLine());
+			int nBooks = Integer.parseInt(rd.readLine()) - 1;
+			Student[] studentArr = new Student[nStudents];
+			for (int i = 0; i < nStudents; i++) {
+				String line = rd.readLine();
+				String studentName = "";
+				for (int j = 0; j < STUDENT_NAME_LENGTH; j++) {
+					studentName += line.charAt(i);
 				}
+				Student instance = new Student(studentName, nBooks);
+				instance.setStudentName(studentName);
+				line = line.substring(STUDENT_NAME_LENGTH);
+				for (int j = 0; j < nBooks; j++) {
+					instance.setPurchasedBook(j, Integer.parseInt(line.charAt(i) + ""));
+				}
+				instance.setUsedTutor(Integer.parseInt(line.charAt(nBooks) + ""));
+				studentArr[i] = instance;
 			}
 			rd.close();
-			return data;
+			return studentArr;
 		} catch (IOException ex) {
 			return null;
 		}
