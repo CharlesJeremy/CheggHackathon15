@@ -1,40 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style media="screen">
+      #TutorsDiv{
+        text-align: center;
+      }
+      .tutorDiv{
+        background-color: orange;
+        color: white;
+        border-radius: 25px;
+      }
+    </style>
     <meta charset="utf-8">
     <title>test</title>
   </head>
   <body>
-    <div id="swag">
 
+    <div id="TutorsDiv">
+      <form class="" action="index.html" method="post">
+        <input type="text" name="name" value="">
+        <input type="button" name="submit" value="Submit">
+      </form>
     </div>
     <script type="text/javascript">
     var tutorArray = [{
       "id": 54,
+      "subject": "being awesome",
       "name": "Nathaniel Shak",
       "school": "Stanford",
-      "picture": "urltoimage.jpg",
-      "numPosReviews": 9001,
-      "numNegReviews": 0
+      "picture": "http://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg",
+      "numPosReviews": 9001
     },
     {
       "id": 23,
+      "subject": "flying",
       "name": "John Pericich",
       "school": "Stanford",
-      "picture": "urltoimage.jpg",
-      "numPosReviews": 9000,
-      "numNegReviews": 1
+      "picture": "http://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg",
+      "numPosReviews": 9000
     },
     {
       "id": 56,
+      "subject": "Computer Science",
       "name": "Deeksha Sharma",
       "school": "Santa Clara Unversity",
-      "picture": "urltoimage.jpg",
-      "numPosReviews": 23,
-      "numNegReviews": 100
+      "picture": "http://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg",
+      "numPosReviews": 23
     }];
+    var element = document.getElementById("TutorsDiv");
     for(var i = 0; i < tutorArray.length; i++){
-      alert(tutorArray[i].name);
+      element.innerHTML +='<div class="tutorDiv"> <h3>' + tutorArray[i].name + '</h3><img src="' + tutorArray[i].picture + '" height="90" width="90"><div class="subject">Subject: ' + tutorArray[i].subject + '</div> <div class="school"> School: ' + tutorArray[i].school + '</div><div class="posReviews">Positive Reviews: ' + tutorArray[i].numPosReviews + '  </div>';
     }
     </script>
   </body>

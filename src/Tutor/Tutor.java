@@ -11,10 +11,10 @@ public class Tutor implements ClassifierConstants {
     private String schoolName;
     private String picture;
     private int positiveReviews;
-    private int negativeReviews;
+    //private int negativeReviews;
 
     public Tutor() {
-    	
+
     }
 
     public String getName() {
@@ -48,12 +48,12 @@ public class Tutor implements ClassifierConstants {
     public void setPositiveReviews(int positiveReviews) {
         this.positiveReviews = positiveReviews;
     }
-
+    /*
     public int getNegativeReviews() {
         return negativeReviews;
     }
 
     public void setNegativeReviews(int negativeReviews) {
         this.negativeReviews = negativeReviews;
-    }
+    }*/
 }
