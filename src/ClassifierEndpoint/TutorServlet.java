@@ -1,6 +1,8 @@
+package ClassifierEndpoint;
+
+import NaiveBayesClassifier.TutorFinder;
 import Tutor.Tutor;
 
-import com.google.gson.Gson;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -9,8 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 @WebServlet("/GetTutorsServlet")
 public class TutorServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private List<Tutor> availableTutors;
+    private TutorFinder tutorFinder;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,11 +44,9 @@ public class TutorServlet extends HttpServlet {
     protected void getAllTutors(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String name = request.getParameter("studentName");
-
-         //= new GetTutors();
-        List<Tutor> tutorObjectList = tutors.getAllTutors();
+        List<Tutor>availableTutors = tutorFinder.getSortedTutorSuggestions();
         //String jsonString = convertToJSON(tutorObjectList);
-        HttpSession thisSession = request.getSession();
+        ServletContext thisSession = request.getServletContext();
         thisSession.setAttribute("studentName", name);
         thisSession.setAttribute("tutorsArray", availableTutors);
         RequestDispatcher dispatch = request.getRequestDispatcher("updateFrontEnd.jsp?tutors=");
@@ -56,7 +54,7 @@ public class TutorServlet extends HttpServlet {
 
     }
 
-    protected String convertToJSON(List<Tutor> tutorObjectList)
+    /*protected String convertToJSON(List<Tutor> tutorObjectList)
     {
         Gson gson = new Gson();
 
