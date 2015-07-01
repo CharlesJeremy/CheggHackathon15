@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Servlet implementation class GetTutorsServlet
  */
-@WebServlet("/GetTutorsServlet")
+@WebServlet("/TutorServlet")
 public class TutorServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private TutorFinder tutorFinder;
@@ -54,14 +54,7 @@ public class TutorServlet extends HttpServlet {
 
     }
 
-    /*protected String convertToJSON(List<Tutor> tutorObjectList)
-    {
-        Gson gson = new Gson();
-
-        //Convert the list of Tutor Objects to JSON
-        return gson.toJson(tutorObjectList);
-    }
-
+   
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */

@@ -3,22 +3,24 @@ package NaiveBayesClassifier;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import ProjectWideResources.ClassifierConstants;
 import Student.Student;
 
 public class RowDataReader implements ClassifierConstants{
+	private List<Student> allStudents;
 	
 	public RowDataReader() {
-		
+		allStudents = new ArrayList<Student>();
 	}
 	
-	public Student[] getData(String filename) {
+	public List<Student> getData(String filename) {
 		try {
 			BufferedReader rd = new BufferedReader(new FileReader(filename));
 			int nStudents = Integer.parseInt(rd.readLine());
 			int nBooks = Integer.parseInt(rd.readLine()) - 1;
-			Student[] studentArr = new Student[nStudents];
 			for (int i = 0; i < nStudents; i++) {
 				String line = rd.readLine();
 				String studentName = "";
@@ -32,10 +34,10 @@ public class RowDataReader implements ClassifierConstants{
 					instance.setPurchasedBook(j, Integer.parseInt(line.charAt(i) + ""));
 				}
 				instance.setUsedTutor(Integer.parseInt(line.charAt(nBooks) + ""));
-				studentArr[i] = instance;
+				allStudents.add(instance);
 			}
 			rd.close();
-			return studentArr;
+			return allStudents;
 		} catch (IOException ex) {
 			return null;
 		}
