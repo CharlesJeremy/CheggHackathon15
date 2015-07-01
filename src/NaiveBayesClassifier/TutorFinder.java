@@ -17,6 +17,7 @@ public class TutorFinder implements ClassifierConstants {
     private static final String TUTOR4 = "Deepak";
     private static final String TUTOR5 = "Nathaniel";
     private static final String TUTOR6 = "Gerrit";
+<<<<<<< HEAD
     
 	
 	public TutorFinder(List<Student> allStudents){
@@ -25,6 +26,18 @@ public class TutorFinder implements ClassifierConstants {
     }
 	
 	public List<Tutor> getSortedTutorSuggestions(){
+=======
+
+
+	public TutorFinder()
+  {
+
+  }
+
+	public List<Tutor> getSortedTutorSuggestions()
+  {
+>>>>>>> 6b1ed4d35144d166f5f857131edaca84fd0393a3
 		return new ArrayList<Tutor>();
 	}
+
 }
