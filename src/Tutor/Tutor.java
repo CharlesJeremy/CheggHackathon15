@@ -11,10 +11,19 @@ public class Tutor implements ClassifierConstants {
     private String schoolName;
     private String picture;
     private int positiveReviews;
+    private double probability;
     //private int negativeReviews;
 
     public Tutor() {
 
+    }
+
+    public double getProbability(){
+      return probability;
+    }
+
+    public void setProbability(double probability){
+      this.probability = probability;
     }
 
     public String getName() {

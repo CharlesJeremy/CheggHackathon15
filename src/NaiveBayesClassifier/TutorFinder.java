@@ -13,13 +13,16 @@ public class TutorFinder implements ClassifierConstants {
     private static final String TUTOR4 = "Deepak";
     private static final String TUTOR5 = "Nathaniel";
     private static final String TUTOR6 = "Gerrit";
-    
-	
-	public TutorFinder(){
-    	
-    }
-	
-	public List<Tutor> getSortedTutorSuggestions(){
+
+
+	public TutorFinder()
+  {
+
+  }
+
+	public List<Tutor> getSortedTutorSuggestions()
+  {
 		return new ArrayList<Tutor>();
 	}
+
 }
