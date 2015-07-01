@@ -1,6 +1,7 @@
 package Student;
 
 import java.util.List;
+import java.util.Set;
 
 import ProjectWideResources.ClassifierConstants;
 import Tutor.Tutor;
@@ -10,40 +11,30 @@ import Tutor.Tutor;
  */
 public class Student implements ClassifierConstants
 {
-    private String name;
-    private String studentId;
-    private List<String> bookId;
-    private List<Tutor> tutors;
+    private String studentName;
+    private int[] purchasedBooks; // contains 1's and 0's
+    private int[] usedTutors; //contains 1's and 0's
 
-    public String getName() {
-        return name;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
-    public String getStudentId() {
-        return studentId;
+
+    public int[] getPurchasedBookIdsId() {
+        return purchasedBooks;
     }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
+    public void setUsedTutor(int tutorNumber, int usedTutor) {
+        usedTutors[tutorNumber] =  usedTutor ;
     }
 
-    public List<String> getBookId() {
-        return bookId;
+    public int getUsedTutor(int tutorNumber) {
+        return usedTutors[tutorNumber];
     }
 
-    public void setBookId(List<String> bookId) {
-        this.bookId = bookId;
-    }
 
-    public List<Tutor> getTutors() {
-        return tutors;
-    }
-
-    public void setTutors(List<Tutor> tutors) {
-        this.tutors = tutors;
-    }
 }
