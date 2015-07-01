@@ -8,8 +8,8 @@ import Student.Student;
 import Tutor.Tutor;
 
 public class TutorFinder implements ClassifierConstants {
-	private List<Student> allStudents;
 	private List<Tutor> allTutors;
+	private NaiveBayesMainClassifier tutorClassifier;
 	
     private static final String TUTOR1 = "Charles";
     private static final String TUTOR2 = "Nicole";
@@ -17,27 +17,27 @@ public class TutorFinder implements ClassifierConstants {
     private static final String TUTOR4 = "Deepak";
     private static final String TUTOR5 = "Nathaniel";
     private static final String TUTOR6 = "Gerrit";
-<<<<<<< HEAD
     
 	
 	public TutorFinder(List<Student> allStudents){
+		tutorClassifier = new NaiveBayesMainClassifier(allStudents);
+		tutorClassifier.train();
 		//statically instantiate tutor array here....
-    	this.allStudents = allStudents;
+    	//this.allStudents = allStudents;
     }
 	
-	public List<Tutor> getSortedTutorSuggestions(){
-=======
 
-
-	public TutorFinder()
-  {
-
-  }
-
-	public List<Tutor> getSortedTutorSuggestions()
-  {
->>>>>>> 6b1ed4d35144d166f5f857131edaca84fd0393a3
-		return new ArrayList<Tutor>();
+	
+	private List<Tutor> getSortedSuggestions(Student testStudent){
+		ArrayList<Tutor> sortedTutors = new ArrayList<Tutor>();
+		for (int i = 0; i < 6; i++){ //adjust this to be a constatnt
+			Double thisTutorProbability = tutorClassifier.getTutorProbability(testStudent);
+			allTutors.get(i).setProbability(thisTutorProbability);
+		}
+        
+		return sortedTutors;
 	}
+
+	
 
 }

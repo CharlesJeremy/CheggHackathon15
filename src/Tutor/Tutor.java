@@ -57,12 +57,13 @@ public class Tutor implements ClassifierConstants {
     public void setPositiveReviews(int positiveReviews) {
         this.positiveReviews = positiveReviews;
     }
-    /*
-    public int getNegativeReviews() {
-        return negativeReviews;
+    
+   
+    
+    @Override
+    public boolean equals(Object obj){
+    	return this.getProbability() == ((Tutor) obj).getProbability();
     }
-
-    public void setNegativeReviews(int negativeReviews) {
-        this.negativeReviews = negativeReviews;
-    }*/
+    
+   
 }
