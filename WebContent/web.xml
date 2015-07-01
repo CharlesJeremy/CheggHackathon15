@@ -1,0 +1,9 @@
+<servlet>
+    <servlet-name>TutorServlet</servlet-name>
+    <servlet-class>TutorServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>TutorServlet</servlet-name>
+<url-pattern>/TutorEndPoint</url-pattern>
+</servlet-mapping>
